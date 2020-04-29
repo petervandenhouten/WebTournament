@@ -15,8 +15,8 @@ export class Home extends Component {
         </ul>
         <p>How to play the tournamement:</p>
           <ul>
-            <li><strong>Create and edit teams</strong>. Click on the <a href='teams'>Teams</a> menu to edit the teams and their players'<em>Counter</em> then <em>Back</em> to return here.</li>
-            <li><strong>Play matches</strong>. Select two teams and play a match in the <a href='play'>Play</a> menu..</li>
+            <li><strong>Create and edit teams</strong>. Click on the <a href='teams'>Teams</a> menu to edit the teams and their players.</li>
+            <li><strong>Play matches</strong>. Select two teams and play a match in the <a href='play'>Play</a> menu.</li>
             <li><strong>Look at the results and the ranking</strong>. All the match results can be view in <a href='results'>Results</a> and the ranking table is available in <a href='table'>Table</a>.</li>
         </ul>
       </div>
