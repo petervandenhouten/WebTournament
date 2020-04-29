@@ -11,15 +11,10 @@ namespace WebTournamentProject.ServerApp.Database
     // Use Entity framework with (file-based) SQLite
     public class DataContext : DbContext
     {
-        private static bool _created = false;
         public DataContext() : base()
         {
-            if (!_created)
-            {
-                _created = true;
-                Database.EnsureDeleted();
-                Database.EnsureCreated();
-            }
+//            Database.EnsureDeleted();
+            Database.EnsureCreated();
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -29,5 +24,7 @@ namespace WebTournamentProject.ServerApp.Database
         public DbSet<Team> Teams { get; set; }
         public DbSet<Result> Results { get; set; }
         public DbSet<Player> Players { get; set; }
+        public DbSet<TeamRanking> Ranking { get; set; }
+
     }
 }

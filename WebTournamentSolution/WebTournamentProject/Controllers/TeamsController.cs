@@ -41,7 +41,12 @@ namespace WebTournamentProject.Controllers
         [HttpPost("create")]
         public string Create()
         {
-            string newTeam = "Ajax";
+            var generator = new NameGenerator();
+            string newTeam = generator.GetTeamName();
+            while (_db.TeamExists(newTeam))
+            {
+                newTeam = generator.GetTeamName();
+            }
             _db.CreateNewTeam(newTeam);
             return newTeam;
         }

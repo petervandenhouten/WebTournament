@@ -77,7 +77,7 @@ export class Teams extends Component
     {
         let contents = this.state.loading
             ? <p><em>Loading...</em></p>
-            : Teams.renderTeamsList(this.state.teams, this);
+            : Teams.renderTeamsList(this.state.teams);
 
         return (
             <div>
