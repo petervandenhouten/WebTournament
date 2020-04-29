@@ -6,6 +6,7 @@ import { Teams } from './components/Teams';
 import { Results } from './components/Results';
 import { Table } from './components/Table';
 import { Play } from './components/Play';
+import { Players } from './components/Players';
 
 import './custom.css'
 
@@ -20,6 +21,7 @@ export default class App extends Component {
         <Route path='/results' component={Results} />
         <Route path='/table' component={Table} />
         <Route path='/play' component={Play} />
+        <Route path='/players' component={Players} />
       </Layout>
     );
   }

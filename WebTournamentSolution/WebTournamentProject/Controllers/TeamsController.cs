@@ -28,13 +28,13 @@ namespace WebTournamentProject.Controllers
             return _db.GetAllTeams();
         }
 
-        // Retrieve the data of one team
-        // GET: api/Teams/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
-        {
-            return "one team";
-        }
+        //// Retrieve the data of one team
+        //// GET: api/Teams/5
+        //[HttpGet("{id}", Name = "Get")]
+        //public string Get(int id)
+        //{
+        //    return "one team";
+        //}
 
         // Create a new team
         // POST: api/Teams/Create
@@ -51,12 +51,12 @@ namespace WebTournamentProject.Controllers
             return newTeam;
         }
 
-        // Update the team name
-        // PUT: api/Teams/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
+        //// Update the team name
+        //// PUT: api/Teams/5
+        //[HttpPut("{id}")]
+        //public void Put(int id, [FromBody] string value)
+        //{
+        //}
 
         // Delete a team
         // DELETE: api/ApiWithActions/5

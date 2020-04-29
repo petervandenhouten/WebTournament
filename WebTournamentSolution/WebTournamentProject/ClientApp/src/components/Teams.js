@@ -1,5 +1,7 @@
 ﻿import React, { Component } from 'react';
 import { Button } from 'reactstrap';
+import { withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function refreshPage()
 {
@@ -42,7 +44,10 @@ export class Teams extends Component
 
     static editTeam(id)
     {
-        console.log("edit" + id)
+        console.log("edit" + id);
+
+        Teams.props.nextPath('/Players/' + id);
+
     }
 
     static deleteTeam(id)
@@ -64,7 +69,7 @@ export class Teams extends Component
                         <tr key={team.teamid}>
                             <td>{team.teamId} / {team.name}</td>
                             <td><Button color="secondary" onClick={() => Teams.renameTeam(team.teamId)} > Rename</Button></td>
-                            <td><Button color="secondary" onClick={() => Teams.editTeam(team.teamId)}>EditPlayers</Button></td>
+                            <td><Link className="btn btn-secondary" to={'/players/' + team.teamId}>Edit players</Link></td>
                             <td><Button color="danger" onClick={() => Teams.deleteTeam(team.teamId)}>Delete</Button></td>
                         </tr>
                     )}

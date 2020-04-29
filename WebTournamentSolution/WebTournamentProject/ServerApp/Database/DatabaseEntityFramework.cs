@@ -48,7 +48,7 @@ namespace WebTournamentProject.ServerApp.Database
         {
             using (var ctx = new DataContext())
             {
-                return ctx.Teams.Single(x => x.TeamId == id);
+                return ctx.Teams.SingleOrDefault(x => x.TeamId == id);
             }
         }
 
