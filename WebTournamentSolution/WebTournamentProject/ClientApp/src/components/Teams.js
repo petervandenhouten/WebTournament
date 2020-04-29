@@ -1,14 +1,23 @@
 ﻿import React, { Component } from 'react';
+import { Button } from 'reactstrap';
 
-export class Teams extends Component {
+function refreshPage()
+{
+    window.location.reload(false);
+}
+
+export class Teams extends Component
+{
     static displayName = Teams.name;
 
-    constructor(props) {
+    constructor(props)
+    {
         super(props);
         this.state = { teams: [], loading: true, clicked: false };
     }
 
-    componentDidMount() {
+    componentDidMount()
+    {
         this.populateTeamsList();
     }
 
@@ -22,9 +31,27 @@ export class Teams extends Component {
             })
             .then(response => { this.setState({ clicked: true });
             });
+
+        refreshPage();
     }
 
-    static renderTeamsList(teams) {
+    static renameTeam(id)
+    {
+        console.log("rename" + id)
+    }
+
+    static editTeam(id)
+    {
+        console.log("edit" + id)
+    }
+
+    static deleteTeam(id)
+    {
+        console.log("delete" + id)
+    }
+
+    static renderTeamsList(teams)
+    {
         return (
             <table className='table table-striped' aria-labelledby="tabelLabel">
                 <thead>
@@ -34,8 +61,11 @@ export class Teams extends Component {
                 </thead>
                 <tbody>
                     {teams.map(team =>
-                        <tr>
-                            <td>{team.name}</td>
+                        <tr key={team.teamid}>
+                            <td>{team.teamId} / {team.name}</td>
+                            <td><Button color="secondary" onClick={() => Teams.renameTeam(team.teamId)} > Rename</Button></td>
+                            <td><Button color="secondary" onClick={() => Teams.editTeam(team.teamId)}>EditPlayers</Button></td>
+                            <td><Button color="danger" onClick={() => Teams.deleteTeam(team.teamId)}>Delete</Button></td>
                         </tr>
                     )}
                 </tbody>
@@ -43,10 +73,11 @@ export class Teams extends Component {
         );
     }
 
-    render() {
+    render()
+    {
         let contents = this.state.loading
             ? <p><em>Loading...</em></p>
-            : Teams.renderTeamsList(this.state.teams);
+            : Teams.renderTeamsList(this.state.teams, this);
 
         return (
             <div>
@@ -58,7 +89,8 @@ export class Teams extends Component {
         );
     }
 
-    async populateTeamsList() {
+    async populateTeamsList()
+    {
         const response = await fetch('api/teams');
         const data = await response.json();
         this.setState({ teams: data, loading: false });

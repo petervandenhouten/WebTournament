@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 using WebTournamentProject.ServerApp.Models;
+using WebTournamentProject.ServerApp.Database;
 
 namespace WebTournamentProject.Controllers
 {
@@ -13,20 +14,21 @@ namespace WebTournamentProject.Controllers
     [ApiController]
     public class TeamsController : ControllerBase
     {
+        private readonly IDatabase _db;
+        public TeamsController(IDatabase db)
+        {
+            _db = db;
+        }
+
         // Retrieve the list of all teams
         // GET: api/Teams
         [HttpGet]
         public IEnumerable<Team> Get()
         {
-            var list = new List<Team>();
-
-            list.Add(new Team { Name = "Team B" });
-            list.Add(new Team { Name = "Team A" });
-
-            return list;
+            return _db.GetAllTeams();
         }
 
-        // Retrieve the data of one teams
+        // Retrieve the data of one team
         // GET: api/Teams/5
         [HttpGet("{id}", Name = "Get")]
         public string Get(int id)
@@ -39,8 +41,9 @@ namespace WebTournamentProject.Controllers
         [HttpPost("create")]
         public string Create()
         {
-            int x = 0;
-            return "name of new team";
+            string newTeam = "Ajax";
+            _db.CreateNewTeam(newTeam);
+            return newTeam;
         }
 
         // Update the team name
